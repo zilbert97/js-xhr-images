@@ -1,0 +1,23 @@
+{
+  "name": "js-xhr-images",
+  "version": "1.0.0",
+  "description": "Part 2 of the Netmatters JS reflection (this module is JS compiler)",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zach Gilbert",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "node-sass": "^5.0.0"
+  },
+  "presets": [
+    "@babel/preset-env"
+  ]
+}
