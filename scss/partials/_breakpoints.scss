@@ -1,0 +1,28 @@
+$breakpoints: (
+  "s"  : 767px,      // SMALL:   0px-767px
+  "m"  : 768px,      // MEDIUM:  768px-991px
+  "l"  : 992px,      // LARGE:   992px-1259px
+  "xl" : 1260px,     // X-LARGE: >= 1260px
+);
+
+@mixin set-content-width {
+  $map-of-widths: (
+    "s" : 750px,
+    "m" : 750px,
+    "l" : 970px,
+    "xl": 1200px,
+  );
+
+  @each $key, $value in $breakpoints {
+    @media (min-width: $value) {
+      max-width: map-get($map-of-widths, $key);
+    }
+  }
+
+  // Set side padding for mobile devices
+  padding: 0 15px;
+
+  @media (min-width: map-get($breakpoints, "m")) {
+    padding: 0;
+  }
+}
