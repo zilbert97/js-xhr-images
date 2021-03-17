@@ -1,7 +1,19 @@
-@import 'partials/variables';
+@import "partials/variables",
+        "partials/flexbox",
+        "partials/breakpoints",
+        "partials/keyframes";
 
 body {
-  font-family: sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 16px;
-  background-color: $primary;
+
+  overflow: auto;  // Bug fix to prevent horizontal scrollbar in IE
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lobster', cursive;
+}
+
+a:hover {
+  text-decoration: none;
 }
