@@ -1,19 +1,59 @@
 @import "partials/variables",
+        "partials/typography",
         "partials/flexbox",
         "partials/breakpoints",
         "partials/keyframes";
 
 body {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 16px;
-
   overflow: auto;  // Bug fix to prevent horizontal scrollbar in IE
+  background-color: $primary;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lobster', cursive;
+//=======================================================
+// HEADER
+//=======================================================
+
+#header {
+  box-sizing: border-box;
+  height    : 100px;
+  width     : 100%;
+
+  border-top      : 1px solid transparent;
+  border-bottom   : 1px solid transparent;
+  background-color: $light;
+
+  &-inner {
+    position  : relative;
+    @include set-content-width;
+    width     : 100%;
+    height    : 100%;
+  }
+  &-heading {
+    display    : block;
+    position   : absolute;
+    width      : 100%;
+    height     : 100%;
+    margin     : 0;
+    color      : $dark;
+    line-height: 100px;
+    text-align : center;
+  }
 }
 
-a:hover {
-  text-decoration: none;
+.main {
+
+  &-inner {
+    @include set-content-width;
+    background-color: lighten($primary, 5%);
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    margin: 35px auto;
+    height: 500px;
+  }
+
+  &-heading {
+    color: $light;
+  }
 }

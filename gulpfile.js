@@ -23,8 +23,6 @@ gulp.task('sass', () => {
 });
 
 gulp.task('default', () => {
-  gulp.series(['es6-min', 'sass']);
-  // Watch for changes made to any .js file and compile
   gulp.watch('./src/app.js', gulp.series('es6-min'));
   gulp.watch('./scss/**/*.scss', gulp.series('sass'));
 });
