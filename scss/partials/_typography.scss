@@ -7,6 +7,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Lobster', cursive;
 }
 
+.heading {
+  color: $light;
+  margin-top: 0;
+}
+
 a:hover {
   text-decoration: none;
 }

@@ -1,0 +1,85 @@
+//===========================
+// FADE IN
+//===========================
+
+@keyframes fade-in {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@-moz-keyframes fade-in {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@-webkit-keyframes fade-in {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@-o-keyframes fade-in {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@-ms-keyframes fade-in {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@mixin fade-element-in {
+  animation          : fade-in ease-in-out .8s;
+  -webkit-animation  : fade-in ease-in-out .8s;
+  -moz-animation     : fade-in ease-in-out .8s;
+  -o-animation       : fade-in ease-in-out .8s;
+  -ms-animation      : fade-in ease-in-out .8s;
+  animation-delay    : .2s;
+  animation-fill-mode: forwards;  // Retain final fill state
+}
+
+.image--fade-in {
+  @include fade-element-in;
+}
+
+//===========================
+// FADE OUT
+//===========================
+
+@keyframes fade-out {
+  100% {opacity: 0;}
+  0% {opacity: 1;}
+}
+
+@-moz-keyframes fade-in {
+  100% {opacity: 0;}
+  0% {opacity: 1;}
+}
+
+@-webkit-keyframes fade-in {
+  100% {opacity: 0;}
+  0% {opacity: 1;}
+}
+
+@-o-keyframes fade-in {
+  100% {opacity: 0;}
+  0% {opacity: 1;}
+}
+
+@-ms-keyframes fade-in {
+  100% {opacity: 0;}
+  0% {opacity: 1;}
+}
+
+@mixin fade-element-out {
+  animation          : fade-out ease-in-out .8s;
+  -webkit-animation  : fade-out ease-in-out .8s;
+  -moz-animation     : fade-out ease-in-out .8s;
+  -o-animation       : fade-out ease-in-out .8s;
+  -ms-animation      : fade-out ease-in-out .8s;
+  animation-fill-mode: forwards;  // Retain final fill state
+}
+
+// For toggling header items unsing JS
+.image--fade-out {
+  @include fade-element-out;
+}
