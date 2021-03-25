@@ -7,6 +7,9 @@
     <meta name="description" content="Stock Image Generator">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock Image Generator</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico"/>
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
@@ -29,29 +32,44 @@
       <main class="main">
         <div class="main--inner">
           <div class="main--content">
-            <h2 class="heading">Choose an Image</h2>
 
-            <div class="choose-image-container">
-              <div class="image--wrapper">
-                <img class="image image--fade-in" src="/assets/img/placeholder-1.jpg" />
-              </div>
-              <div class="image--details">
-                <h3 class="heading">Image Name Goes Here</h3>
-                <p class="image--description">File Size: </p>
-                <button id="reset-button">
-                  <i class="fas fa-redo-alt"></i>
-                  <span>New image</span>
+            <h2 class="heading">1. Link Your Email Address</h2>
+            <div class="email--container">
+              <div class="email--input-wrapper">
+                <input class="email--input" type="email" />
+                <button class="email--button" type="button">
+                  <i class="fas fa-link"></i>
+                  <span>Link</span>
                 </button>
               </div>
             </div>
 
-            <h2 class="heading">Your Email Address</h2>
+            <h2 class="heading">2. Choose an Image</h2>
+            <div class="choose-image-container">
+              <div class="image--wrapper">
+                <img class="image fade-in" src="/assets/img/placeholder-1.jpg" />
+              </div>
+              <div class="image--details">
+                <h3 class="heading">Image Name Goes Here</h3>
+                <p class="image--description">File Size: </p>
+                <div class="image--button-container">
+                  <button class="image--reset-button">
+                    <i class="fas fa-redo-alt"></i>
+                    <span>New image</span>
+                  </button>
+                  <button class="image--attach-button">
+                    <i class="fas fa-paperclip"></i>
+                    <span>Attach</span>
+                  </button>
+                </div>
+              </div>
+            </div>
 
-            <h2 class="heading">Your Selected Images</h2>
+            <h3 class="heading">Your Attached Images</h3>
             <div class="gallery">
               <figure class="gallery--item">
                 <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-1.jpg" class="gallery--img" />
+                  <img src="/assets/img/placeholder-1.jpg" class="gallery--img fade-in" />
                 </div>
                 <div class="gallery--item-remove">
                   <i class="fas fa-times"></i>
@@ -60,7 +78,7 @@
 
               <figure class="gallery--item">
                 <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-2.jpg" class="gallery--img" />
+                  <img src="/assets/img/placeholder-2.jpg" class="gallery--img fade-in" />
                 </div>
                 <div class="gallery--item-remove">
                   <i class="fas fa-times"></i>
@@ -69,7 +87,7 @@
 
               <figure class="gallery--item">
                 <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-3.jpg" class="gallery--img" />
+                  <img src="/assets/img/placeholder-3.jpg" class="gallery--img fade-in" />
                 </div>
                 <div class="gallery--item-remove">
                   <i class="fas fa-times"></i>
@@ -78,7 +96,7 @@
 
               <figure class="gallery--item">
                 <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-1.jpg" class="gallery--img" />
+                  <img src="/assets/img/placeholder-1.jpg" class="gallery--img fade-in" />
                 </div>
                 <div class="gallery--item-remove">
                   <i class="fas fa-times"></i>
@@ -87,7 +105,7 @@
 
               <figure class="gallery--item">
                 <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-2.jpg" class="gallery--img" />
+                  <img src="/assets/img/placeholder-2.jpg" class="gallery--img fade-in" />
                 </div>
                 <div class="gallery--item-remove">
                   <i class="fas fa-times"></i>
@@ -96,7 +114,7 @@
 
               <figure class="gallery--item">
                 <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-3.jpg" class="gallery--img" />
+                  <img src="/assets/img/placeholder-3.jpg" class="gallery--img fade-in" />
                 </div>
                 <div class="gallery--item-remove">
                   <i class="fas fa-times"></i>
@@ -105,7 +123,7 @@
 
               <figure class="gallery--item">
                 <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-1.jpg" class="gallery--img" />
+                  <img src="/assets/img/placeholder-1.jpg" class="gallery--img fade-in" />
                 </div>
                 <div class="gallery--item-remove">
                   <i class="fas fa-times"></i>
@@ -114,7 +132,7 @@
 
               <figure class="gallery--item">
                 <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-2.jpg" class="gallery--img" />
+                  <img src="/assets/img/placeholder-2.jpg" class="gallery--img fade-in" />
                 </div>
                 <div class="gallery--item-remove">
                   <i class="fas fa-times"></i>
@@ -123,17 +141,20 @@
 
               <figure class="gallery--item">
                 <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-3.jpg" class="gallery--img" />
+                  <img src="/assets/img/placeholder-3.jpg" class="gallery--img fade-in" />
                 </div>
                 <div class="gallery--item-remove">
                   <i class="fas fa-times"></i>
                 </div>
               </figure>
             </div> <!-- .gallery -->
+
+
           </div> <!-- .main--content -->
         </div> <!-- .main--inner -->
       </main>
     </div>
 
+    <script src="/js/app.js"></script>
   </body>
 </html>

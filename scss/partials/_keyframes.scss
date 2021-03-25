@@ -37,7 +37,7 @@
   animation-fill-mode: forwards;  // Retain final fill state
 }
 
-.image--fade-in {
+.fade-in {
   @include fade-element-in;
 }
 
