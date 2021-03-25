@@ -19,5 +19,13 @@
   },
   "presets": [
     "@babel/preset-env"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zilbert97/js-xhr-images.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zilbert97/js-xhr-images/issues"
+  },
+  "homepage": "https://github.com/zilbert97/js-xhr-images#readme"
 }
