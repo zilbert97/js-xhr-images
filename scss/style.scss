@@ -250,16 +250,18 @@ body {
   @include align-content(space-between);
 
   &--item {
-    @include flex($f-grow: 0, $f-shrink: 1, $f-basis: calc(100% / 3));
+    @include flex($f-grow: 0, $f-shrink: 1, $f-basis: 33.3%);
+    max-width: 33.3%;
 
     @each $_viewportWidth, $_itemWidth in (
       500px: 25%,
       625px: 20%,
-      map-get($breakpoints, 'm'): calc(100%/6),
+      map-get($breakpoints, 'm'): 16.6%,
       map-get($breakpoints, 'l'): 12.5%
     ) {
       @media (min-width: $_viewportWidth) {
         @include flex($f-grow: 0, $f-shrink: 1, $f-basis: $_itemWidth);
+        max-width: $_itemWidth;
       }
     }
 
