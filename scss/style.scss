@@ -120,24 +120,27 @@ body {
   border-radius: 5px;
 
   &--wrapper {
-    @include flex($f-grow: 0, $f-shrink: 1, $f-basis: 100%);
+    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
     height    : 300px;
   }
   &--details {
     box-sizing: border-box;
     padding   : 15px 0;
-    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: 100%);
+    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
+    height: max-content;
   }
 
   @media (min-width: map-get($breakpoints, 'm')) {
     &--wrapper {
-      @include flex($f-grow: 0, $f-shrink: 0, $f-basis: 70%);
+      @include flex($f-grow: 0, $f-shrink: 1, $f-basis: 70%);
       height       : 400px;
       width        : 70%;
       padding-right: 15px;
     }
     &--details {
       @include flex($f-grow: 0, $f-shrink: 0, $f-basis: 30%);
+      box-sizing: border-box;
+
       padding    : 0 15px;
       border-left: 2px solid $primary;
       height     : 400px;
@@ -165,14 +168,16 @@ body {
     @include justify-content(space-between);
   }
   &--reset-button {
-    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: 49%);
+    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
     @include button-style;
     min-height: 100%;
+    width: 49%;
   }
   &--attach-button {
-    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: 49%);
+    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
     @include button-style;
     min-height: 100%;
+    width: 49%;
   }
 }
 
