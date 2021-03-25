@@ -1,1 +1,1 @@
-"use strict";for(var buttons=document.getElementsByClassName("gallery--item-remove"),i=0;i<buttons.length;i++)buttons[i].addEventListener("click",function(e){e=e.target.parentNode.parentNode;e.parentNode.removeChild(e)});
+"use strict";for(var buttons=document.getElementsByClassName("gallery--item-remove"),i=0;i<buttons.length;i++)buttons[i].addEventListener("click",function(e){e=e.target.parentNode.parentNode;e.parentNode.removeChild(e)});createValidator();

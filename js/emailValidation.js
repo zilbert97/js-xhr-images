@@ -1,0 +1,1 @@
+"use strict";function createValidator(){var t=document.querySelector(".email--input");return document.querySelector(".email--button").addEventListener("click",function(){var e;e=t,new RegExp("[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}").test(e.value.toUpperCase())?console.log("VALID"):console.log("INVALID")})}

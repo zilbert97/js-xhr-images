@@ -5,6 +5,10 @@ for (let i = 0; i < buttons.length; i++) {
 
     let wrapper = e.target.parentNode.parentNode;
     wrapper.parentNode.removeChild(wrapper);
-
   });
 }
+
+
+//
+
+createValidator();

@@ -6,7 +6,7 @@ const uglify = require('gulp-uglify');
 
 gulp.task('es6-min', () => {
   // src is the dir containing uncompiled scripts
-  return gulp.src('./src/app.js').pipe(
+  return gulp.src('./src/*.js').pipe(
     babel({
       presets: ['@babel/preset-env']
     })).pipe(uglify()).pipe(
@@ -23,6 +23,6 @@ gulp.task('sass', () => {
 });
 
 gulp.task('default', () => {
-  gulp.watch('./src/app.js', gulp.series('es6-min'));
+  gulp.watch('./src/*.js', gulp.series('es6-min'));
   gulp.watch('./scss/**/*.scss', gulp.series('sass'));
 });
