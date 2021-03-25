@@ -141,7 +141,7 @@ body {
       @include flex($f-grow: 0, $f-shrink: 0, $f-basis: 30%);
       box-sizing: border-box;
 
-      padding    : 0 15px;
+      padding    : 0 0 0 15px;
       border-left: 2px solid $primary;
       height     : 400px;
     }
