@@ -242,32 +242,32 @@ body {
 
 .gallery {
   margin: 0 0 15px;
-  width                : 100%;
-  display              : -ms-grid;
-  display              : grid;
+  width: 100%;
 
-  // IE workaround to make responsive (works to narrowest possible
-  // viewport width as IE isn't on any mobile devices do not need to
-  // test smaller)
-  -ms-grid-columns: (minmax(80px, 1fr))[4];
-  @media (min-width: map-get($breakpoints, 'l')) {
-    -ms-grid-columns   : (minmax(100px, 1fr))[6];
-  }
-  @media (min-width: map-get($breakpoints, 'l')) {
-    -ms-grid-columns   : (minmax(100px, 1fr))[8];
-  }
-
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  grid-gap             : 15px;
+  @include flexbox;
+  @include flex-flow(row wrap);
+  @include justify-content(flex-start);
+  @include align-content(space-between);
 
   &--item {
-    position     : relative;
+    @include flex($f-grow: 0, $f-shrink: 1, $f-basis: calc(100% / 3));
+
+    @each $_viewportWidth, $_itemWidth in (
+      500px: 25%,
+      625px: 20%,
+      map-get($breakpoints, 'm'): calc(100%/6),
+      map-get($breakpoints, 'l'): 12.5%
+    ) {
+      @media (min-width: $_viewportWidth) {
+        @include flex($f-grow: 0, $f-shrink: 1, $f-basis: $_itemWidth);
+      }
+    }
+
+    box-sizing   : border-box;
     margin       : 0;
-    width        : 100%;
     height       : 100px;
     border       : 1px solid transparent;
     border-radius: 3px;
-
     &:hover {
       box-shadow : 0 0 0 3px $tertiary;
 
@@ -276,7 +276,6 @@ body {
       }
     }
   }
-
   &--img {
     width     : 100%;
     height    : 100%;
@@ -289,6 +288,12 @@ body {
       overflow     : hidden;
       border-radius: 2px;
     }
+  }
+  &--item-spacer {
+    @include flex($f-grow: 1, $f-shrink: 1, $f-basis: auto);
+    min-width: 12.5%;
+    max-width: 100%;
+    height   : 100px;
   }
 
   &--item-remove {
