@@ -1,16 +1,41 @@
-class RandomImage {
-  constructor(number) {
-    this.imageList = axios.get(
-      `https://picsum.photos/v2/list?limit=${number}`
+const getRandomImage = () => {
+    const randomIndex = max => Math.floor(Math.random() * max);
+    const getRandomImageObject = allImageObjects => allImageObjects[
+        randomIndex(allImageObjects.length - 1)
+    ];
+
+    axios.get(
+        `https://picsum.photos/v2/list?limit=100`
     ).then((response) => {
-      console.log(response);
+        const imagePreview = document.querySelector('.image');
+        const createImageCookies = (currentImageObject) => {
+            for (let i = 0; i < Object.keys(currentImageObject).length; i++) {
+                const currentKey = Object.keys(currentImageObject)[i];
+                document.cookie = `currentImage_${currentKey}=${currentImageObject[currentKey]}`;
+            }
+        }
+        const setRandomImage = () => {
+            let currentImageObject = getRandomImageObject(response.data);
+            imagePreview.src = currentImageObject.download_url;
+            createImageCookies(currentImageObject);
+        }
+        const resetButton = document.querySelector('.image--reset-button');
+
+        setRandomImage();
+        resetButton.addEventListener('click', () => {
+            imagePreview.classList.toggle('fade-in');
+            imagePreview.classList.toggle('fade-out');
+            setTimeout(() => {
+                imagePreview.style.visibility = 'hidden';
+                imagePreview.classList.toggle('fade-out');
+                setRandomImage();
+            }, 300);
+            setTimeout(() => {
+                imagePreview.style.visibility = 'visible';
+                imagePreview.classList.toggle('fade-in');
+            }, 600);
+        });
     }).catch((error) => {
-      console.error(error);
-    }).finally(() => {
+        console.error(error);
     });
-  }
 }
-
-
-const myClass = RandomImage(50);
-console.log(myClass.imageList);

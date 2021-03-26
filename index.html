@@ -19,6 +19,9 @@
     <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    <!-- ClassList full implementation -->
+    <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20171210/classList.min.js"></script>
+
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
@@ -50,7 +53,7 @@
             <h2 class="heading">2. Choose an Image</h2>
             <div class="choose-image-container">
               <div class="image--wrapper">
-                <img class="image fade-in" src="/assets/img/placeholder-1.jpg" />
+                <img class="image fade-in" src="" />
               </div>
               <div class="image--details">
                 <h3 class="heading">Image Name Goes Here</h3>
@@ -71,87 +74,6 @@
 
             <h3 class="heading">Your Attached Images</h3>
             <div class="gallery">
-              <figure class="gallery--item">
-                <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-1.jpg" class="gallery--img fade-in" />
-                </div>
-                <div class="gallery--item-remove">
-                  <i class="fas fa-times"></i>
-                </div>
-              </figure>
-
-              <figure class="gallery--item">
-                <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-2.jpg" class="gallery--img fade-in" />
-                </div>
-                <div class="gallery--item-remove">
-                  <i class="fas fa-times"></i>
-                </div>
-              </figure>
-
-              <figure class="gallery--item">
-                <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-3.jpg" class="gallery--img fade-in" />
-                </div>
-                <div class="gallery--item-remove">
-                  <i class="fas fa-times"></i>
-                </div>
-              </figure>
-
-              <figure class="gallery--item">
-                <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-1.jpg" class="gallery--img fade-in" />
-                </div>
-                <div class="gallery--item-remove">
-                  <i class="fas fa-times"></i>
-                </div>
-              </figure>
-
-              <figure class="gallery--item">
-                <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-2.jpg" class="gallery--img fade-in" />
-                </div>
-                <div class="gallery--item-remove">
-                  <i class="fas fa-times"></i>
-                </div>
-              </figure>
-
-              <figure class="gallery--item">
-                <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-3.jpg" class="gallery--img fade-in" />
-                </div>
-                <div class="gallery--item-remove">
-                  <i class="fas fa-times"></i>
-                </div>
-              </figure>
-
-              <figure class="gallery--item">
-                <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-1.jpg" class="gallery--img fade-in" />
-                </div>
-                <div class="gallery--item-remove">
-                  <i class="fas fa-times"></i>
-                </div>
-              </figure>
-
-              <figure class="gallery--item">
-                <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-2.jpg" class="gallery--img fade-in" />
-                </div>
-                <div class="gallery--item-remove">
-                  <i class="fas fa-times"></i>
-                </div>
-              </figure>
-
-              <figure class="gallery--item">
-                <div class="gallery--img-wrapper">
-                  <img src="/assets/img/placeholder-3.jpg" class="gallery--img fade-in" />
-                </div>
-                <div class="gallery--item-remove">
-                  <i class="fas fa-times"></i>
-                </div>
-              </figure>
-
               <div class="gallery--item-spacer"></div>
             </div> <!-- .gallery -->
           </div> <!-- .main--content -->
@@ -160,6 +82,8 @@
     </div>
 
     <script src="/js/emailValidation.js"></script>
+    <script src="/js/randomImage.js"></script>
+    <script src="/js/addRemoveGalleryItem.js"></script>
     <script src="/js/app.js"></script>
   </body>
 </html>
