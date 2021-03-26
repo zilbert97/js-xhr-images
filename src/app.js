@@ -1,3 +1,5 @@
+// REMOVE GALLERY ITEM
+
 const buttons = document.getElementsByClassName('gallery--item-remove');
 
 for (let i = 0; i < buttons.length; i++) {
@@ -9,12 +11,56 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 
-//
+// APP.JS STUFF
 
 createValidator();
 
 
 
+const createImageCookies = (currentImageObject) => {
+
+  for (let i = 0; i < Object.keys(currentImageObject).length; i++) {
+    const currentKey = Object.keys(currentImageObject)[i];
+    document.cookie = `currentImage_${currentKey}=${currentImageObject[currentKey]}`;
+  }
+}
+
+
+
+const createRandom = () => {
+  const randomIndex = max => Math.floor(Math.random() * max);
+  const getRandomImageObject = allImageObjects => allImageObjects[
+    randomIndex(allImageObjects.length - 1)
+  ];
+
+  const imagePreview = document.querySelector('.image');
+  const resetButton = document.querySelector('.image--reset-button');
+
+  axios.get(
+    `https://picsum.photos/v2/list?limit=100`
+  ).then((response) => {
+    let currentImageObject = getRandomImageObject(response.data);
+    imagePreview.src = currentImageObject.download_url;
+
+    createImageCookies(currentImageObject);
+
+    resetButton.addEventListener('click', () => {
+      currentImageObject = getRandomImageObject(response.data);
+      imagePreview.src = currentImageObject.download_url;
+      createImageCookies(currentImageObject);
+    });
+
+
+
+
+  }).catch((error) => {
+    console.error(error);
+  }).finally(() => {
+  });
+
+}
+
+createRandom();
 
 
 //
@@ -26,46 +72,15 @@ class UserImages {
     this.chosenImages = new Array();
     this.allImages = allImages;
   }
-
-  randomImageObject() {
-    // Random number between 0 and 99 (or number of images in pool -1)
-    const randomInteger = Math.floor(Math.random() * (this.allImages.length - 1));
-    return this.allImages[randomInteger];
-  }
 }
 
 
 
 
-axios.get(
-  `https://picsum.photos/v2/list?limit=100`
-).then((response) => {
-  const attachButton = document.querySelector('.image--attach-button');
-  const resetButton = document.querySelector('.image--reset-button');
 
-  document.querySelector('.email--button').addEventListener(
-    'click', () => {
-      //attachButton.removeEventListener('click', imagePicker);
-      //resetButton.removeEventListener('click', imagePicker);
+const attachButton = document.querySelector('.image--attach-button');
 
-      const newUser = new UserImages('me@me.com', response.data);
-
-      const attachButton = document.querySelector('.image--attach-button');
-      const refreshButton = document.querySelector('.image--reset-button');
-
-      refreshButton.addEventListener('click', () => {
-        const imagePreview = document.querySelector('.image');
-        const currentImageObject = newUser.randomImageObject();
-        imagePreview.src = currentImageObject.download_url;
-      });
-
-    }
-  )
-}).then((response) => {
-}).catch((error) => {
-  console.error(error);
-}).finally(() => {
-});
+document.querySelector('.email--button').addEventListener('click', () => {});
 
 
 
@@ -78,6 +93,4 @@ axios.get(
   Declare an empty variable chosenImages
   On button click pick random number
   Display the image by accessing index
-
-
 */
