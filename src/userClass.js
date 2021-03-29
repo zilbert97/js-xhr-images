@@ -74,6 +74,7 @@ class UserImages {
 
             // Add an event listener for the image's remove button, to remove it from the gallery
             newGalleryItemRemove.addEventListener('click', (e) => {
+                console.log(e.target.parentNode.parentNode);
                 let wrapper = e.target.parentNode.parentNode;
                 wrapper.parentNode.removeChild(wrapper);
 
