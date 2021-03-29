@@ -11,8 +11,6 @@ function createValidator() {
             return 'empty';
         }
         else if (reEmail.test(input.value.toUpperCase())) {
-            responseMessage.style.color = '#25BD38';
-            responseMessage.innerHTML = `Using ${input.value}`;
             return input.value;
         } else {
             responseMessage.style.color = null;
