@@ -1,8 +1,8 @@
 const getRandomImage = () => {
-    const randomIndex = max => Math.floor(Math.random() * max);
-    const getRandomImageObject = allImageObjects => allImageObjects[
-        randomIndex(allImageObjects.length - 1)
-    ];
+    const getRandomImageObject = allImageObjects => {
+        const randomIndex = max => Math.floor(Math.random() * max);
+        return allImageObjects[randomIndex(allImageObjects.length - 1)]
+    }
 
     axios.get(
         `https://picsum.photos/v2/list?limit=250`
@@ -16,8 +16,8 @@ const getRandomImage = () => {
                 document.cookie = `currentImage_${currentKey}=${currentImageObject[currentKey]}`;
             }
         }
-        const setRandomImage = () => {
-            let currentImageObject = getRandomImageObject(response.data);
+        const setRandomImage = (data) => {
+            const currentImageObject = getRandomImageObject(data);
             imagePreview.src = currentImageObject.download_url;
             imageAuthor.innerHTML = currentImageObject.author;
             imageSize.innerHTML = `${currentImageObject.width} x ${currentImageObject.height}`;
@@ -25,14 +25,14 @@ const getRandomImage = () => {
         }
         const resetButton = document.querySelector('.image--reset-button');
 
-        setRandomImage();
+        setRandomImage(response.data);
         resetButton.addEventListener('click', () => {
             imagePreview.classList.toggle('fade-in');
             imagePreview.classList.toggle('fade-out');
             setTimeout(() => {
                 imagePreview.style.visibility = 'hidden';
                 imagePreview.classList.toggle('fade-out');
-                setRandomImage();
+                setRandomImage(response.data);
             }, 300);
             setTimeout(() => {
                 imagePreview.style.visibility = 'visible';
