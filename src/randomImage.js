@@ -1,4 +1,4 @@
-const getRandomImage = () => {
+(function getRandomImage() {
     const getRandomImageObject = allImageObjects => {
         const randomIndex = max => Math.floor(Math.random() * max);
         return allImageObjects[randomIndex(allImageObjects.length - 1)]
@@ -42,4 +42,4 @@ const getRandomImage = () => {
     }).catch((error) => {
         console.error(error);
     });
-}
+})();
