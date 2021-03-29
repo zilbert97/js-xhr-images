@@ -28,12 +28,14 @@
 }
 
 @mixin fade-element-in {
-  animation          : fade-in ease-in-out .3s;
-  -webkit-animation  : fade-in ease-in-out .3s;
-  -moz-animation     : fade-in ease-in-out .3s;
-  -o-animation       : fade-in ease-in-out .3s;
-  -ms-animation      : fade-in ease-in-out .3s;
-  animation-fill-mode: forwards;  // Retain final fill state
+  -webkit-animation          : fade-in ease-in-out .3s;
+  -moz-animation             : fade-in ease-in-out .3s;
+  -o-animation               : fade-in ease-in-out .3s;
+  -ms-animation              : fade-in ease-in-out .3s;
+  animation                  : fade-in ease-in-out .3s;
+
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode        : forwards;  // Retain final fill state
 }
 
 .fade-in {
@@ -70,12 +72,13 @@
 }
 
 @mixin fade-element-out {
-  animation          : fade-out ease-in-out .3s;
-  -webkit-animation  : fade-out ease-in-out .3s;
-  -moz-animation     : fade-out ease-in-out .3s;
-  -o-animation       : fade-out ease-in-out .3s;
-  -ms-animation      : fade-out ease-in-out .3s;
-  animation-fill-mode: forwards;  // Retain final fill state
+  -webkit-animation          : fade-out ease-in-out .3s;
+  -moz-animation             : fade-out ease-in-out .3s;
+  -o-animation               : fade-out ease-in-out .3s;
+  -ms-animation              : fade-out ease-in-out .3s;
+  animation                  : fade-out ease-in-out .3s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode        : forwards;  // Retain final fill state
 }
 
 // For toggling header items unsing JS
