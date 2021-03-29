@@ -47,6 +47,18 @@ body {
   }
 }
 
+.button-inactive.image--attach-button {
+  opacity             : .5;
+  &:hover, &:focus, &:active {
+    cursor            : default;
+    background-color  : $tertiary;
+    border-color      : $tertiary;
+    -moz-box-shadow   : none;
+    -webkit-box-shadow: none;
+    box-shadow        : none;
+  }
+}
+
 //=======================================================
 // MAIN
 //=======================================================
@@ -157,8 +169,11 @@ body {
   }
 
   &--description {
-    color      : $dark;
-    font-weight: 600;
+    color        : $dark;
+    font-weight  : 600;
+    &-meta {
+      font-weight: 400;
+    }
   }
 
   &--button-container {

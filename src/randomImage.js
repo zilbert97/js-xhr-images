@@ -8,6 +8,8 @@ const getRandomImage = () => {
         `https://picsum.photos/v2/list?limit=100`
     ).then((response) => {
         const imagePreview = document.querySelector('.image');
+        const imageAuthor = document.querySelector('#meta-label--author > span');
+        const imageSize = document.querySelector('#meta-label--size > span');
         const createImageCookies = (currentImageObject) => {
             for (let i = 0; i < Object.keys(currentImageObject).length; i++) {
                 const currentKey = Object.keys(currentImageObject)[i];
@@ -17,6 +19,8 @@ const getRandomImage = () => {
         const setRandomImage = () => {
             let currentImageObject = getRandomImageObject(response.data);
             imagePreview.src = currentImageObject.download_url;
+            imageAuthor.innerHTML = currentImageObject.author;
+            imageSize.innerHTML = `${currentImageObject.width} x ${currentImageObject.height}`;
             createImageCookies(currentImageObject);
         }
         const resetButton = document.querySelector('.image--reset-button');

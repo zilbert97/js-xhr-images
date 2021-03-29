@@ -8,6 +8,10 @@ let validationResult;
 
 document.querySelector('.email--button').addEventListener('click', () => {
     validationResult = validateEmail();
+
+    if (validationResult && validationResult !== 'empty') {
+      document.querySelector('.image--attach-button').classList.remove('button-inactive');
+    }
 });
 
 // 3. ATTCH A NEW IMAGE TO THE GALLERY OF SELECTED ITEMS
@@ -16,7 +20,6 @@ const attachButton = document.querySelector('.image--attach-button');
 
 attachButton.addEventListener('click', () => {
     if (validationResult === 'empty' || !validationResult) {
-        console.log('Valid email not given');
     } else {
         const gallery = document.querySelector('.gallery');
         addGalleryItem();
@@ -35,11 +38,18 @@ class UserImages {
 
 
 /*
-===== PLAN - 1 =====
-1. Add email meta data to picture description
-2. Add fade in and out classes to picture description elements (spans) added
+On click email link
+  If email is valid
+    If no email currently stored
+      Create instance
+      Add current email to cookies
+    Else if no
+    If email not different to currently stored
 
-===== PLAN - 2 =====
+*/
+
+/*
+===== PLAN =====
 1. On email not assigned, clicking 'attach' should prompt the user to assign an email address
 2. On email assigned, create a user instance
 3. On clicking 'attach', first check image ID is not in instance's chosenImages.
