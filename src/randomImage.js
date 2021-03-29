@@ -5,7 +5,7 @@ const getRandomImage = () => {
     ];
 
     axios.get(
-        `https://picsum.photos/v2/list?limit=100`
+        `https://picsum.photos/v2/list?limit=250`
     ).then((response) => {
         const imagePreview = document.querySelector('.image');
         const imageAuthor = document.querySelector('#meta-label--author > span');
