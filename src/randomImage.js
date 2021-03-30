@@ -26,6 +26,7 @@
         (response) => {
             const imageAuthor = document.querySelector('#meta-label--author > span');
             const imageSize = document.querySelector('#meta-label--size > span');
+            const imageSource = document.querySelector('#meta-label--link > a');
 
             /**
              * Iterates through the image object keys and stores values.
@@ -59,6 +60,7 @@
                 const imageObject = getRandomImageObject(data);
                 imageAuthor.innerHTML = imageObject.author;
                 imageSize.innerHTML = `${imageObject.width} x ${imageObject.height}`;
+                imageSource.href = imageObject.url;
                 storeCurrentImage(imageObject);
 
                 return imageObject.download_url;

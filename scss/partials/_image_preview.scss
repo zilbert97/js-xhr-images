@@ -1,0 +1,95 @@
+//=======================================================
+// IMAGE DISPLAY
+//=======================================================
+
+.choose-image-container {
+  @include flexbox;
+  @include flex-flow(column nowrap);
+  margin-bottom: 15px;
+  width        : 100%;
+
+  @media (min-width: map-get($breakpoints, 'm')) {
+    @include flex-flow(row nowrap);
+  }
+}
+
+.image {
+  max-width    : 100%;
+  max-height   : 100%;
+  object-fit   : contain;
+  box-sizing   : content-box;
+  border       : 1px solid transparent;
+  border-radius: 5px;
+
+  &--wrapper {
+    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
+    height    : 300px;
+  }
+  &--details {
+    box-sizing: border-box;
+    padding   : 15px 0;
+    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
+    height: max-content;
+  }
+
+  @media (min-width: map-get($breakpoints, 'm')) {
+    &--wrapper {
+      @include flex($f-grow: 0, $f-shrink: 1, $f-basis: 70%);
+      height       : 400px;
+      width        : 70%;
+      padding-right: 15px;
+    }
+    &--details {
+      @include flex($f-grow: 0, $f-shrink: 0, $f-basis: 30%);
+      box-sizing: border-box;
+
+      padding    : 0 0 0 15px;
+      border-left: 2px solid $primary;
+      height     : 400px;
+    }
+  }
+
+  @media (min-width: map-get($breakpoints, 'l')) {
+    &--wrapper {
+      height: 500px;
+    }
+    &--details {
+      height: 500px;
+    }
+  }
+
+  &--description {
+    color        : $dark;
+    font-weight  : 600;
+    &-meta {
+      font-weight: 400;
+    }
+    a, a:visited {
+      color: $secondary;
+      text-decoration: none;
+    }
+    a:hover, a:focus, a:active {
+      color: darken($secondary, 10%);
+      text-decoration: underline;
+    }
+  }
+
+  &--button-container {
+    @include flexbox;
+    @include flex-flow(row nowrap);
+    @include align-items(stretch);
+    @include justify-content(space-between);
+  }
+  &--reset-button {
+    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
+    @include button-style;
+    min-height: 100%;
+    width: 49%;
+  }
+  &--attach-button {
+    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
+    @include button-style;
+    min-height: 100%;
+    width: 49%;
+  }
+}
