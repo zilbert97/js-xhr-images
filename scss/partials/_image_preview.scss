@@ -65,11 +65,11 @@
       font-weight: 400;
     }
     a, a:visited {
-      color: $secondary;
+      color          : $secondary;
       text-decoration: none;
     }
     a:hover, a:focus, a:active {
-      color: darken($secondary, 10%);
+      color          : darken($secondary, 10%);
       text-decoration: underline;
     }
   }
