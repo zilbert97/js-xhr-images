@@ -77,14 +77,14 @@
                         imagePreview.style.visibility = 'hidden';
                         imagePreview.classList.toggle('fade-out');
                         setRandomImage(response.data);
-                    }, 300);
+                    }, 320);
 
                     // Set the new image's visibility to visible then fade in,
                     // after the previous image has been faded out and hidden.
                     setTimeout(() => {
                         imagePreview.style.visibility = 'visible';
                         imagePreview.classList.toggle('fade-in');
-                    }, 600);
+                    }, 640);
                 }
             );
         }
