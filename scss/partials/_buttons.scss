@@ -1,0 +1,45 @@
+//=======================================================
+// BUTTON
+//=======================================================
+
+@mixin button-style($type: null) {
+  padding       : 10px;
+
+  color         : $light;
+  font-weight   : 600;
+  text-transform: uppercase;
+
+  $_color: $tertiary;
+
+  @if $type == 'email' {
+    border-radius   : 0 5px 5px 0;
+  } @else {
+    border-radius   : 5px;
+  }
+
+  border            : 1px solid $_color;
+  background-color  : $_color;
+  &:hover, &:active, &:focus {
+    background-color: darken($_color, 5%);
+    border          : 1px solid darken($_color, 5%);
+    outline         : none;
+    cursor          : pointer;
+  }
+  &:active {
+    -moz-box-shadow   : inset 0 3px 5px rgba(0,0,0,.125);
+    -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    box-shadow        : inset 0 3px 5px rgba(0,0,0,.125);
+  }
+}
+
+.button-inactive.image--attach-button {
+  opacity             : .5;
+  &:hover, &:focus, &:active {
+    cursor            : default;
+    background-color  : $tertiary;
+    border-color      : $tertiary;
+    -moz-box-shadow   : none;
+    -webkit-box-shadow: none;
+    box-shadow        : none;
+  }
+}

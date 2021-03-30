@@ -4,6 +4,10 @@
         "partials/breakpoints",
         "partials/keyframes";
 
+//=======================================================
+// MAIN
+//=======================================================
+
 body {
   overflow: auto;  // Bug fix to prevent horizontal scrollbar in IE
   background-color: $primary;
@@ -12,56 +16,6 @@ body {
 #page {
   overflow-x: hidden;
 }
-
-//=======================================================
-// BUTTON
-//=======================================================
-
-@mixin button-style($type: null) {
-  padding       : 10px;
-
-  color         : $light;
-  font-weight   : 600;
-  text-transform: uppercase;
-
-  $_color: $tertiary;
-
-  @if $type == 'email' {
-    border-radius   : 0 5px 5px 0;
-  } @else {
-    border-radius   : 5px;
-  }
-
-  border            : 1px solid $_color;
-  background-color  : $_color;
-  &:hover, &:active, &:focus {
-    background-color: darken($_color, 5%);
-    border          : 1px solid darken($_color, 5%);
-    outline         : none;
-    cursor          : pointer;
-  }
-  &:active {
-    -moz-box-shadow   : inset 0 3px 5px rgba(0,0,0,.125);
-    -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
-    box-shadow        : inset 0 3px 5px rgba(0,0,0,.125);
-  }
-}
-
-.button-inactive.image--attach-button {
-  opacity             : .5;
-  &:hover, &:focus, &:active {
-    cursor            : default;
-    background-color  : $tertiary;
-    border-color      : $tertiary;
-    -moz-box-shadow   : none;
-    -webkit-box-shadow: none;
-    box-shadow        : none;
-  }
-}
-
-//=======================================================
-// MAIN
-//=======================================================
 
 .main {
   &--inner {
@@ -79,6 +33,15 @@ body {
     border-radius   : 10px;
   }
 }
+
+//=======================================================
+// OTHER PAGE ELEMENTS
+//=======================================================
+
+@import "partials/buttons",
+        "partials/image_preview",
+        "partials/image_gallery",
+        "partials/email_input";
 
 //=======================================================
 // HEADER
@@ -105,246 +68,5 @@ body {
     color      : $dark;
     line-height: 100px;
     text-align : center;
-  }
-}
-
-//=======================================================
-// IMAGE DISPLAY
-//=======================================================
-
-.choose-image-container {
-  @include flexbox;
-  @include flex-flow(column nowrap);
-  margin-bottom: 15px;
-  width        : 100%;
-
-  @media (min-width: map-get($breakpoints, 'm')) {
-    @include flex-flow(row nowrap);
-  }
-}
-
-.image {
-  max-width    : 100%;
-  max-height   : 100%;
-  object-fit   : contain;
-  box-sizing   : content-box;
-  border       : 1px solid transparent;
-  border-radius: 5px;
-
-  &--wrapper {
-    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
-    height    : 300px;
-  }
-  &--details {
-    box-sizing: border-box;
-    padding   : 15px 0;
-    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
-    height: max-content;
-  }
-
-  @media (min-width: map-get($breakpoints, 'm')) {
-    &--wrapper {
-      @include flex($f-grow: 0, $f-shrink: 1, $f-basis: 70%);
-      height       : 400px;
-      width        : 70%;
-      padding-right: 15px;
-    }
-    &--details {
-      @include flex($f-grow: 0, $f-shrink: 0, $f-basis: 30%);
-      box-sizing: border-box;
-
-      padding    : 0 0 0 15px;
-      border-left: 2px solid $primary;
-      height     : 400px;
-    }
-  }
-
-  @media (min-width: map-get($breakpoints, 'l')) {
-    &--wrapper {
-      height: 500px;
-    }
-    &--details {
-      height: 500px;
-    }
-  }
-
-  &--description {
-    color        : $dark;
-    font-weight  : 600;
-    &-meta {
-      font-weight: 400;
-    }
-  }
-
-  &--button-container {
-    @include flexbox;
-    @include flex-flow(row nowrap);
-    @include align-items(stretch);
-    @include justify-content(space-between);
-  }
-  &--reset-button {
-    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
-    @include button-style;
-    min-height: 100%;
-    width: 49%;
-  }
-  &--attach-button {
-    @include flex($f-grow: 0, $f-shrink: 0, $f-basis: auto);
-    @include button-style;
-    min-height: 100%;
-    width: 49%;
-  }
-}
-
-//=======================================================
-// EMAIL ADDRESS
-//=======================================================
-
-.email {
-  &--container {
-    width        : 100%;
-    margin       : 0 0 15px 0;
-
-    @include flexbox;
-    @include flex-flow(column nowrap);
-    @media (min-width: map-get($breakpoints, 'm')) {
-      @include flex-flow(row nowrap);
-    }
-  }
-  &--input {
-    box-sizing   : border-box;
-    padding      : 0 90px 0 10px;
-    height       : 40px;
-    width        : calc(100% - 2px);
-    border       : 1px solid transparent;
-    border-radius: 5px;
-    &:focus {
-      outline    : 0;
-    }
-    color        : $dark;
-  }
-  &--input-wrapper {
-    position     : relative;
-    width        : 100%;
-    max-width    : 400px;
-  }
-  &--button {
-    @include button-style('email');
-    position     : absolute;
-    top          : 0;
-    right        : 0;
-    width        : 80px;
-  }
-
-  &--validation {
-    height: 40px;
-    @media (min-width: map-get($breakpoints, 'm')) {
-      margin-left: 15px;
-    }
-  }
-  &--validation-copy {
-    display    : block;
-    line-height: 40px;
-    height     : 100%;
-    color      : $error-red;
-    font-weight: 600;
-  }
-}
-
-//=======================================================
-// GALLERY
-//=======================================================
-
-.gallery {
-  margin: 0 0 15px;
-  width: 100%;
-
-  @include flexbox;
-  @include flex-flow(row wrap);
-  @include justify-content(flex-start);
-  @include align-content(space-between);
-
-  &--item {
-    @include flex($f-grow: 0, $f-shrink: 1, $f-basis: 33.3%);
-    max-width: 33.3%;
-
-    @each $_viewportWidth, $_itemWidth in (
-      500px: 25%,
-      625px: 20%,
-      map-get($breakpoints, 'm'): 16.6%,
-      map-get($breakpoints, 'l'): 12.5%
-    ) {
-      @media (min-width: $_viewportWidth) {
-        @include flex($f-grow: 0, $f-shrink: 1, $f-basis: $_itemWidth);
-        max-width: $_itemWidth;
-      }
-    }
-
-    position     : relative;
-    box-sizing   : border-box;
-    margin       : 0;
-    height       : 100px;
-    border       : 3px solid transparent;
-    border-radius: 3px;
-    &:hover {
-      border     : 3px solid $tertiary;
-
-      .gallery--item-remove {
-        display  : block;
-      }
-    }
-  }
-  &--img {
-    position : absolute;
-    width    : 150%;
-    height   : auto;
-    top      : 50%;
-    left     : 50%;
-    transform: translate(-50%, -50%);
-
-    &-wrapper {
-      box-sizing   : content-box;
-      height       : 100%;
-      width        : 100%;
-      overflow     : hidden;
-      border-radius: 2px;
-
-      position: relative;
-    }
-  }
-  &--item-spacer {
-    @include flex($f-grow: 1, $f-shrink: 1, $f-basis: auto);
-    min-width: 12.5%;
-    max-width: 100%;
-    height   : 100px;
-  }
-
-  &--item-remove {
-    display         : none;
-    position        : absolute;
-    width           : 25px;
-    height          : 25px;
-    top             : -12px;
-    right           : -12px;
-    z-index         : 1000;
-
-    background-color: $error-red;
-    border          : 1px solid $error-red;
-    border-radius   : 100%;
-
-    &:hover {
-      background-color: darken($error-red, 10%);
-      border-color    : darken($error-red, 10%);
-      cursor          : pointer;
-    }
-
-    i {
-      width         : 25px;
-      height        : 25px;
-      color         : $light;
-      font-size     : 25px;
-      text-align    : center;
-      vertical-align: middle;
-    }
   }
 }

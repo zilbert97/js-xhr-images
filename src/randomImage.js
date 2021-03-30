@@ -24,9 +24,9 @@
 
     axios.get(`https://picsum.photos/v2/list?limit=250`).then(
         (response) => {
-            const imagePreview = document.querySelector('.image');
             const imageAuthor = document.querySelector('#meta-label--author > span');
             const imageSize = document.querySelector('#meta-label--size > span');
+            const imageSource = document.querySelector('#meta-label--link > a');
 
             /**
              * Iterates through the image object keys and stores values.
@@ -54,37 +54,49 @@
              * in the user instance passed.
              *
              * @param {array} data - All image objects.
-             * @return {void} None.
+             * @return {string} - The URL for the image loaded.
              */
             const setRandomImage = data => {
                 const imageObject = getRandomImageObject(data);
-                imagePreview.src = imageObject.download_url;
                 imageAuthor.innerHTML = imageObject.author;
                 imageSize.innerHTML = `${imageObject.width} x ${imageObject.height}`;
+                imageSource.href = imageObject.url;
                 storeCurrentImage(imageObject);
+
+                return imageObject.download_url;
             }
 
-            setRandomImage(response.data);
+            document.querySelector('.image').src = setRandomImage(response.data);
 
             // On reset button click gets a new image.
             document.querySelector('.image--reset-button').addEventListener(
                 'click', () => {
-                    imagePreview.classList.toggle('fade-in');
-                    imagePreview.classList.toggle('fade-out');
+                    let previousImage = document.querySelector('.image');
+
+                    previousImage.classList.toggle('fade-in');
+                    previousImage.classList.toggle('fade-out');
 
                     // Set the image to hidden after fade-out, then get a new image
                     setTimeout(() => {
-                        imagePreview.style.visibility = 'hidden';
-                        imagePreview.classList.toggle('fade-out');
-                        setRandomImage(response.data);
-                    }, 300);
+                        previousImage.style.visibility = 'hidden';
+                        previousImage.classList.toggle('fade-out');
 
-                    // Set the new image's visibility to visible then fade in,
-                    // after the previous image has been faded out and hidden.
-                    setTimeout(() => {
-                        imagePreview.style.visibility = 'visible';
-                        imagePreview.classList.toggle('fade-in');
-                    }, 600);
+                        // Create a new image element
+                        const newImage = new Image();
+                        // Set it to hidden (before included in the DOM)
+                        newImage.style.visibility = 'hidden';
+                        newImage.classList.add('image');
+                        // Set the src attribute to a random image URL
+                        newImage.src = setRandomImage(response.data);
+
+                        setTimeout(() => {
+                            // Replace the image in the DOM with the new image
+                            previousImage.parentNode.replaceChild(newImage, previousImage);
+                            // Set the new image's visibility and fade-in
+                            newImage.style.visibility = 'visible';
+                            newImage.classList.toggle('fade-in');
+                        }, 300);
+                    }, 300);
                 }
             );
         }
