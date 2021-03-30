@@ -8,7 +8,7 @@
  *
  * @returns {void} None.
  */
-(function getRandomImage(currentImageObject) {
+(function getRandomImage(user) {
 
     /**
      * Returns a random image object from an array passed.
@@ -29,24 +29,18 @@
             const imageSize = document.querySelector('#meta-label--size > span');
 
             /**
-             * Iterates through the image object keys and assigns values to cookies.
+             * Iterates through the image object keys and stores values.
              *
              * @param {object} imageObject - An image object containing the
-             *                                      link and associated data.
+             *                               link and associated data.
              * @return {void} None.
              */
-            const createImageCookies = imageObject => {
-                /*
-                for (let i = 0; i < Object.keys(imageObject).length; i++) {
-                    const currentKey = Object.keys(imageObject)[i];
-                    document.cookie = `currentImage_${currentKey}=${imageObject[currentKey]}`;
-                }                */
-
-                for (let i = 0; i < Object.keys(currentImageObject).length; i++) {
-                    currentImageObject[
-                      Object.keys(currentImageObject)[i]
+            const storeCurrentImage = imageObject => {
+                for (let i = 0; i < Object.keys(user.currentImageObject).length; i++) {
+                    user.currentImageObject[
+                      Object.keys(user.currentImageObject)[i]
                     ] = imageObject[
-                      Object.keys(currentImageObject)[i]
+                      Object.keys(user.currentImageObject)[i]
                     ];
                 }
             }
@@ -56,8 +50,8 @@
              *
              * Parses all image objects and displays one on the front end along
              * with some metadata. The image displayed is a random image by calling
-             * getRandomImageObject(). That image and its metadata are then stored
-             * in cookies, by calling createImageCookies().
+             * getRandomImageObject(). That image and its metadata are then set
+             * in the user instance passed.
              *
              * @param {array} data - All image objects.
              * @return {void} None.
@@ -67,7 +61,7 @@
                 imagePreview.src = imageObject.download_url;
                 imageAuthor.innerHTML = imageObject.author;
                 imageSize.innerHTML = `${imageObject.width} x ${imageObject.height}`;
-                createImageCookies(imageObject);
+                storeCurrentImage(imageObject);
             }
 
             setRandomImage(response.data);
@@ -95,4 +89,4 @@
             );
         }
     ).catch((error) => {console.error(error)});
-})(currentImageObject);
+})(newUser);
