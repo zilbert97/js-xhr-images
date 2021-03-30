@@ -43,7 +43,7 @@ class UserImages {
                 if (validationResult && validationResult !== 'empty') {
 
                     // Make attach button appear as active
-                    document.querySelector('.image--attach-button').classList.remove('button-inactive');
+                    attachButton.classList.remove('button-inactive');
 
                     // If first user email passed (none stored previously),
                     // store the new user email in the instance
