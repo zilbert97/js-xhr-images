@@ -6,9 +6,16 @@
  */
 class UserImages {
 
-    constructor() {
+    constructor(image) {
         this._userEmail = null;
         this._chosenImages = new Array();
+        this.currentImageObject = {
+          download_url: null,
+          author: null,
+          id: null,
+          height: null,
+          width: null
+        };
 
         /**
          * Adds click event handlers to buttons.
@@ -67,18 +74,18 @@ class UserImages {
     /**
      * Add the image to the gallery and class instance chosenImages property.
      *
-     * Gets the current image ID from the currentImage_id cookie, and checks
-     * whether the image has already been selected.
+     * Gets the current image ID and checks whether the image has already been
+     * selected.
      *
      * @return {void} None.
      */
     addGalleryItem() {
-        const currentImageID = document.cookie.split('; ').find(row => row.startsWith('currentImage_id=')).split('=')[1];
+        const currentImageID = this.currentImageObject.id;
 
         // Checks if the image is not already in the chosenImages array.
         if (!(this._chosenImages.indexOf(currentImageID) >= 0)) {
             // Get the current image URL
-            const currentImageURL = document.cookie.split('; ').find(row => row.startsWith('currentImage_download_url=')).split('=')[1];
+            const currentImageURL = this.currentImageObject.download_url;
 
             // Add HTML to display a new image in the gallery.
             const gallery = document.querySelector('.gallery');
