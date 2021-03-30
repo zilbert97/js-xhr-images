@@ -58,17 +58,20 @@
              */
             const setRandomImage = data => {
                 const imageObject = getRandomImageObject(data);
-                imagePreview.src = imageObject.download_url;
                 imageAuthor.innerHTML = imageObject.author;
                 imageSize.innerHTML = `${imageObject.width} x ${imageObject.height}`;
                 storeCurrentImage(imageObject);
+
+                return imageObject.download_url;
             }
 
-            setRandomImage(response.data);
+            imagePreview.src = setRandomImage(response.data);
 
             // On reset button click gets a new image.
             document.querySelector('.image--reset-button').addEventListener(
                 'click', () => {
+                    let imagePreview = document.querySelector('.image');
+
                     imagePreview.classList.toggle('fade-in');
                     imagePreview.classList.toggle('fade-out');
 
@@ -76,15 +79,28 @@
                     setTimeout(() => {
                         imagePreview.style.visibility = 'hidden';
                         imagePreview.classList.toggle('fade-out');
-                        setRandomImage(response.data);
-                    }, 320);
+
+                        // REPLACE THE ELEMENT WITH A NEW ELEMENT
+                        const newImage = new Image();
+                        newImage.style.visibility = 'hidden';
+                        newImage.classList.add('image');
+                        newImage.onload = () => {
+                            console.log('LOADED');
+                        }
+                        newImage.src = setRandomImage(response.data);
+
+                        setTimeout(() => {
+                            imagePreview.parentNode.replaceChild(newImage, imagePreview);
+                            newImage.style.visibility = 'visible';
+                            newImage.classList.toggle('fade-in');
+                        }, 300);
+                    }, 300);
 
                     // Set the new image's visibility to visible then fade in,
                     // after the previous image has been faded out and hidden.
-                    setTimeout(() => {
-                        imagePreview.style.visibility = 'visible';
-                        imagePreview.classList.toggle('fade-in');
-                    }, 640);
+
+
+
                 }
             );
         }
