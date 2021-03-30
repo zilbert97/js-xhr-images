@@ -8,7 +8,7 @@
  *
  * @returns {void} None.
  */
-(function getRandomImage() {
+(function getRandomImage(currentImageObject) {
 
     /**
      * Returns a random image object from an array passed.
@@ -31,14 +31,23 @@
             /**
              * Iterates through the image object keys and assigns values to cookies.
              *
-             * @param {object} currentImageObject - An image object containing the
+             * @param {object} imageObject - An image object containing the
              *                                      link and associated data.
              * @return {void} None.
              */
-            const createImageCookies = currentImageObject => {
+            const createImageCookies = imageObject => {
+                /*
+                for (let i = 0; i < Object.keys(imageObject).length; i++) {
+                    const currentKey = Object.keys(imageObject)[i];
+                    document.cookie = `currentImage_${currentKey}=${imageObject[currentKey]}`;
+                }                */
+
                 for (let i = 0; i < Object.keys(currentImageObject).length; i++) {
-                    const currentKey = Object.keys(currentImageObject)[i];
-                    document.cookie = `currentImage_${currentKey}=${currentImageObject[currentKey]}`;
+                    currentImageObject[
+                      Object.keys(currentImageObject)[i]
+                    ] = imageObject[
+                      Object.keys(currentImageObject)[i]
+                    ];
                 }
             }
 
@@ -54,11 +63,11 @@
              * @return {void} None.
              */
             const setRandomImage = data => {
-                const currentImageObject = getRandomImageObject(data);
-                imagePreview.src = currentImageObject.download_url;
-                imageAuthor.innerHTML = currentImageObject.author;
-                imageSize.innerHTML = `${currentImageObject.width} x ${currentImageObject.height}`;
-                createImageCookies(currentImageObject);
+                const imageObject = getRandomImageObject(data);
+                imagePreview.src = imageObject.download_url;
+                imageAuthor.innerHTML = imageObject.author;
+                imageSize.innerHTML = `${imageObject.width} x ${imageObject.height}`;
+                createImageCookies(imageObject);
             }
 
             setRandomImage(response.data);
@@ -86,4 +95,4 @@
             );
         }
     ).catch((error) => {console.error(error)});
-})();
+})(currentImageObject);

@@ -73,12 +73,14 @@ class UserImages {
      * @return {void} None.
      */
     addGalleryItem() {
-        const currentImageID = document.cookie.split('; ').find(row => row.startsWith('currentImage_id=')).split('=')[1];
+        //const currentImageID = document.cookie.split('; ').find(row => row.startsWith('currentImage_id=')).split('=')[1];
+        const currentImageID = currentImageObject.id;
 
         // Checks if the image is not already in the chosenImages array.
         if (!(this._chosenImages.indexOf(currentImageID) >= 0)) {
             // Get the current image URL
-            const currentImageURL = document.cookie.split('; ').find(row => row.startsWith('currentImage_download_url=')).split('=')[1];
+            //const currentImageURL = document.cookie.split('; ').find(row => row.startsWith('currentImage_download_url=')).split('=')[1];
+            const currentImageURL = currentImageObject.download_url;
 
             // Add HTML to display a new image in the gallery.
             const gallery = document.querySelector('.gallery');

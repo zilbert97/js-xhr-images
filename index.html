@@ -1,100 +1,104 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-  <head>
-    <meta charset="utf-8">
-    <title>Index</title>
-    <meta name="author" content="Zach Gilbert">
-    <meta name="description" content="Stock Image Generator">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Image Generator</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico"/>
-    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<head>
+  <meta charset="utf-8">
+  <title>Index</title>
+  <meta name="author" content="Zach Gilbert">
+  <meta name="description" content="Stock Image Generator">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Image Generator</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
-    <!-- ES6 Promise Polyfill -->
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+  <!-- ES6 Promise Polyfill -->
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- Axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <!-- ClassList full implementation -->
-    <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20171210/classList.min.js"></script>
+  <!-- ClassList full implementation -->
+  <script src="https://cdn.jsdelivr.net/npm/eligrey-classlist-js-polyfill@1.2.20171210/classList.min.js"></script>
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <div id="page">
-      <header id="header">
-        <div id="header-inner">
-          <h1 id="header-heading">JS XHR Images</h1>
-        </div>
-      </header>
-      <main class="main">
-        <div class="main--inner">
-          <div class="main--content">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-            <h2 class="heading">1. Link Your Email Address</h2>
-            <div class="email--container">
-              <div class="email--input-wrapper">
-                <input class="email--input" type="email" />
-                <button class="email--button" type="button">
-                  <i class="fas fa-link"></i>
-                  <span>Link</span>
+<body>
+  <div id="page">
+    <header id="header">
+      <div id="header-inner">
+        <h1 id="header-heading">JS XHR Images</h1>
+      </div>
+    </header>
+    <main class="main">
+      <div class="main--inner">
+        <div class="main--content">
+
+          <h2 class="heading">1. Link Your Email Address</h2>
+          <div class="email--container">
+            <div class="email--input-wrapper">
+              <input class="email--input" type="email" />
+              <button class="email--button" type="button">
+                <i class="fas fa-link"></i>
+                <span>Link</span>
+              </button>
+            </div>
+            <div class="email--validation">
+              <span class="email--validation-copy"></span>
+            </div>
+          </div>
+
+          <h2 class="heading">2. Choose an Image</h2>
+          <div class="choose-image-container">
+            <div class="image--wrapper">
+              <img class="image fade-in" src="" />
+            </div>
+            <div class="image--details">
+              <h3 class="heading">Image Name Goes Here</h3>
+              <p id="meta-label--author" class="image--description">Author:&MediumSpace;
+                <span class="image--description-meta"></span>
+              </p>
+              <p id="meta-label--size" class="image--description">Image Size:&MediumSpace;
+                <span class="image--description-meta"></span>
+              </p>
+              <div class="image--button-container">
+                <button class="image--reset-button">
+                  <i class="fas fa-redo-alt"></i>
+                  <span>New image</span>
+                </button>
+                <button class="image--attach-button button-inactive">
+                  <i class="fas fa-paperclip"></i>
+                  <span>Attach</span>
                 </button>
               </div>
-              <div class="email--validation">
-                <span class="email--validation-copy"></span>
-              </div>
             </div>
+          </div>
 
-            <h2 class="heading">2. Choose an Image</h2>
-            <div class="choose-image-container">
-              <div class="image--wrapper">
-                <img class="image fade-in" src="" />
-              </div>
-              <div class="image--details">
-                <h3 class="heading">Image Name Goes Here</h3>
-                <p id="meta-label--author" class="image--description">Author:&MediumSpace;
-                  <span class="image--description-meta"></span>
-                </p>
-                <p id="meta-label--size" class="image--description">Image Size:&MediumSpace;
-                  <span class="image--description-meta"></span>
-                </p>
-                <div class="image--button-container">
-                  <button class="image--reset-button">
-                    <i class="fas fa-redo-alt"></i>
-                    <span>New image</span>
-                  </button>
-                  <button class="image--attach-button button-inactive">
-                    <i class="fas fa-paperclip"></i>
-                    <span>Attach</span>
-                  </button>
-                </div>
-              </div>
-            </div>
+          <h3 class="heading">Your Attached Images</h3>
+          <div class="gallery">
+            <div class="gallery--item-spacer"></div>
+          </div> <!-- .gallery -->
+        </div> <!-- .main content -->
+      </div> <!-- main inner -->
+    </main>
+  </div>
 
-            <h3 class="heading">Your Attached Images</h3>
-            <div class="gallery">
-              <div class="gallery--item-spacer"></div>
-            </div> <!-- .gallery -->
-          </div> <!-- .main content -->
-        </div> <!-- main inner -->
-      </main>
-    </div>
+  <script src="js/currentImage.js"></script>
+  <script src="js/polyfills.js"></script>
+  <script src="js/emailValidation.js"></script>
+  <script src="js/randomImage.js"></script>
+  <script src="js/userClass.js"></script>
 
-    <script src="/js/polyfills.js"></script>
-    <script src="/js/emailValidation.js"></script>
-    <script src="/js/randomImage.js"></script>
-    <script src="/js/userClass.js"></script>
-    <script>
-      const newUser = new UserImages();
-    </script>
-  </body>
+  <script>
+    const newUser = new UserImages();
+  </script>
+</body>
+
 </html>
