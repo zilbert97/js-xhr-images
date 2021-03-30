@@ -19,8 +19,8 @@ $breakpoints: (
     }
   }
 
-  // Set side padding for mobile devices
-  padding: 0 15px;
+  margin: 0 auto;
+  padding: 0 15px;  // Set side padding for mobile devices
 
   @media (min-width: map-get($breakpoints, "m")) {
     padding: 0;
