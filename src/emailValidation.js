@@ -15,7 +15,8 @@ function createValidator() {
      *                         or false if the user's email is invalid.
      */
     const validate = input => {
-        const reEmail = new RegExp('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}');
+        const reEmail = new RegExp('[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}');
+
         const responseMessage = document.querySelector('.email--validation-copy');
 
         if (!input.value) {
