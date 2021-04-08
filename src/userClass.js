@@ -6,11 +6,12 @@
  */
 class UserImages {
 
-    constructor(image) {
+    constructor() {
         this._userEmail = null;
         this._chosenImages = new Array();
         this.currentImageObject = {
           download_url: null,
+          url: null,
           author: null,
           id: null,
           height: null,
@@ -93,7 +94,9 @@ class UserImages {
             newGalleryItem.classList.add('gallery--item');
             newGalleryItem.innerHTML = `
                 <div class="gallery--img-wrapper">
-                    <img src="${currentImageURL}" class="gallery--img fade-in" />
+                    <a href="${this.currentImageObject.url}" target="_blank">
+                        <img src="${currentImageURL}" class="gallery--img fade-in" alt="Randomly generated image - author ${this.currentImageObject.author}"/>
+                    </a>
                 </div>
                 <div class="gallery--item-remove">
                     <i class="fas fa-times"></i>
