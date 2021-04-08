@@ -66,7 +66,15 @@
                 return imageObject.download_url;
             }
 
+            // If JS enabled, image element initially has display set to none
+            // to prevent brief display of no image placeholder. Once adding a
+            // new image, this re-displays the image element to show the
+            // randomly generated one.
+
             document.querySelector('.image').src = setRandomImage(response.data);
+            setTimeout(()=>{
+                document.querySelector('.image').removeAttribute('style');
+            }, 200);
 
             // On reset button click gets a new image.
             document.querySelector('.image--reset-button').addEventListener(
@@ -88,6 +96,7 @@
                         newImage.classList.add('image');
                         // Set the src attribute to a random image URL
                         newImage.src = setRandomImage(response.data);
+                        newImage.alt = "Randomly generated image from Picsum";
 
                         setTimeout(() => {
                             // Replace the image in the DOM with the new image
