@@ -35,6 +35,7 @@
              *                               link and associated data.
              * @return {void} None.
              */
+
             const storeCurrentImage = imageObject => {
                 for (let i = 0; i < Object.keys(user.currentImageObject).length; i++) {
                     user.currentImageObject[
